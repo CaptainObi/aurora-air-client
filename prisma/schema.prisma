@@ -1,0 +1,71 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Airport {
+  id      Int     @id @default(autoincrement())
+  code    String  @unique
+  city    String
+  name    String  @unique
+  xCord   Int
+  yCord   Int
+  gates   Gate[]
+  hubType HubType @default(NonHub)
+
+  @@unique([xCord, yCord])
+}
+
+model Gate {
+  id        Int      @id @default(autoincrement())
+  name      String
+  airport   Airport  @relation(fields: [airportId], references: [id])
+  airportId Int      @map("airport_id")
+  size      Size     @default(S)
+  flights   Flight[]
+
+  @@unique([name, airportId])
+  @@map("gate")
+}
+
+model Flight {
+  id      Int    @id @default(autoincrement())
+  number  Int    @unique
+  plane   Plane  @relation(fields: [planeId], references: [id])
+  planeId Int    @map("plane_id")
+  gates   Gate[]
+
+  @@map("flight")
+}
+
+model Plane {
+  id      Int      @id @default(autoincrement())
+  name    String
+  flights Flight[]
+  image   String?
+  width   Int
+  length  Int
+
+  @@map("plane")
+}
+
+enum Size {
+  XS
+  S
+  MS
+  M
+}
+
+enum HubType {
+  Main
+  Secondary
+  Other
+  NonHub
+}
