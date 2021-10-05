@@ -1,10 +1,12 @@
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
+import {
+  GetStaticPaths,
+  GetStaticPropsContext,
+  InferGetStaticPropsType,
+} from 'next';
 import prisma from '../../lib/prisma';
 import FlightCards from '../../components/FlightCard/FlightCards';
 
-const Airport = ({
-      data,
-    }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Airport = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div>
       <FlightCards
@@ -28,11 +30,17 @@ const Airport = ({
   );
 };
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext,
-) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = (await prisma.airport.findMany()).map(({ code }) => ({
+    params: { airport: code },
+  }));
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps = async (context: GetStaticPropsContext) => {
   const data = await prisma.airport.findUnique({
-    where: { code: String(context.query.airport) },
+    where: { code: String(context.params.airport) },
     select: {
       code: true,
       cities: true,
@@ -62,17 +70,11 @@ export const getServerSideProps = async (
     },
   });
 
-  if (!data) {
-    return {
-      notFound: true,
-      props: { data },
-    };
-  }
-
   return {
     props: {
       data,
     },
+    revalidate: 20000,
   };
 };
 

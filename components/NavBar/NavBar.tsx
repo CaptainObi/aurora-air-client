@@ -17,7 +17,7 @@ const NavBar = ({}) => {
   return (
     <div className="flex items-center w-full h-12 bg-aurora-blue">
       {elements.map(({ label, link }) => (
-        <NavBarElement link={link} name={label} />
+        <NavBarElement link={link} name={label} key={link} />
       ))}
     </div>
   );
