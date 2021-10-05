@@ -15,9 +15,11 @@ model Airport {
   code    String  @unique
   city    String
   name    String  @unique
+  link    String?
   xCord   Int
   yCord   Int
   gates   Gate[]
+  copy    String?
   hubType HubType @default(NonHub)
 
   @@unique([xCord, yCord])
@@ -47,11 +49,13 @@ model Flight {
 
 model Plane {
   id      Int      @id @default(autoincrement())
-  name    String
+  name    String   @unique
   flights Flight[]
   image   String?
   width   Int
   length  Int
+  copy    String?
+  size    Size     @default(S)
 
   @@map("plane")
 }

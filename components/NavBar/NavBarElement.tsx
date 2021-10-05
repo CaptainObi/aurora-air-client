@@ -6,9 +6,9 @@ interface Props {
 
 const NavBarElement = ({ name, link }: Props) => {
   return (
-    <div className="flex items-center justify-center h-full p-2 hover:bg-aurora-purple">
+    <div className="flex items-center justify-center h-full p-2 text-white hover:bg-aurora-purple">
       <Link href={link}>
-        <a className="">{name}</a>
+        <h1 className="cursor-pointer">{name}</h1>
       </Link>
     </div>
   );

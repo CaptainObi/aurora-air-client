@@ -1,10 +1,10 @@
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next';
 import prisma from '../../lib/prisma';
 import FlightCards from '../../components/FlightCard/FlightCards';
 
 const Airport = ({
-      data,
-    }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  data,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <div>
       <FlightCards
@@ -28,7 +28,9 @@ const Airport = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext,
+) => {
   const data = await prisma.airport.findUnique({
     where: { code: String(context.query.airport) },
     select: {
