@@ -1,5 +1,5 @@
 import { InferGetStaticPropsType, GetStaticPropsContext } from 'next';
-import { HubSize } from '../components/enums/HubSize';
+import { HubSize } from '../components/functions/HubSize';
 import FlightCards from '../components/FlightCard/FlightCards';
 import prisma from '../lib/prisma';
 

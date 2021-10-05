@@ -1,6 +1,6 @@
 import prisma from '../lib/prisma';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import { HubBorderColor, HubSize } from '../components/enums/HubSize';
+import { HubBorderColor, HubSize } from '../components/functions/HubSize';
 import Link from 'next/link';
 
 const Hubs = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -17,7 +17,11 @@ const Hubs = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
             <h2 className="mt-1 font-mono">{`(${s.xCord}, ${s.yCord})`}</h2>
             <h2>
               <b>City: </b>
-              {s.city}
+              {s.cities.length === 1
+                ? s.cities[0]?.name
+                : s.cities.map(({ name }, e, array) =>
+                    array.length === e + 1 ? name : `${name}, `,
+                  )}
             </h2>
             <h2>
               <b>Type: </b>
@@ -45,7 +49,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     },
     select: {
       code: true,
-      city: true,
+      cities: true,
       name: true,
       xCord: true,
       yCord: true,

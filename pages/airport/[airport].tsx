@@ -3,8 +3,8 @@ import prisma from '../../lib/prisma';
 import FlightCards from '../../components/FlightCard/FlightCards';
 
 const Airport = ({
-  data,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+      data,
+    }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
     <div>
       <FlightCards
@@ -35,7 +35,7 @@ export const getServerSideProps = async (
     where: { code: String(context.query.airport) },
     select: {
       code: true,
-      city: true,
+      cities: true,
       name: true,
       xCord: true,
       yCord: true,

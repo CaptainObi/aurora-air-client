@@ -10,10 +10,20 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model City {
+  id       Int       @id @default(autoincrement())
+  xCord    Int
+  yCord    Int
+  name     String    @unique
+  airports Airport[]
+
+  @@unique([xCord, yCord])
+}
+
 model Airport {
   id      Int     @id @default(autoincrement())
   code    String  @unique
-  city    String
+  cities  City[]
   name    String  @unique
   link    String?
   xCord   Int

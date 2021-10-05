@@ -126,7 +126,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
         yCord: true,
         name: true,
         code: true,
-        city: true,
+        cities: true,
         gates: {
           select: {
             flights: {
