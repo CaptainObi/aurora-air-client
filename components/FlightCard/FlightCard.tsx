@@ -1,5 +1,5 @@
 import { Airport, Plane, Size } from '.prisma/client';
-import { HubColor, HubSize } from '../enums/HubSize';
+import { HubColor, HubSize } from '../functions/HubSize';
 import FlightCardGate from './FlightCardGate';
 import FlightCardMiddle from './FlightCardMiddle';
 
