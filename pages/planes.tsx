@@ -44,7 +44,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     },
   });
 
-  return { props: { data } };
+  return { props: { data }, revalidate: 100 };
 };
 
 export default Planes;
