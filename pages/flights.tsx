@@ -58,7 +58,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     },
   });
 
-  return { props: { data }, revalidate: 10000 };
+  return { props: { data }, revalidate: 100 };
 };
 
 export default Flights;

@@ -142,7 +142,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     }),
   };
 
-  return { props: { data }, revalidate: 3600 };
+  return { props: { data }, revalidate: 100 };
 };
 
 export default Map;

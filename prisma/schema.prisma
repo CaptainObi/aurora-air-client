@@ -12,12 +12,8 @@ generator client {
 
 model City {
   id       Int       @id @default(autoincrement())
-  xCord    Int
-  yCord    Int
   name     String    @unique
   airports Airport[]
-
-  @@unique([xCord, yCord])
 }
 
 model Airport {
@@ -48,8 +44,7 @@ model Gate {
 }
 
 model Flight {
-  id      Int    @id @default(autoincrement())
-  number  Int    @unique
+  number  Int    @unique @id
   plane   Plane  @relation(fields: [planeId], references: [id])
   planeId Int    @map("plane_id")
   gates   Gate[]
