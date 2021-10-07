@@ -1,6 +1,6 @@
-import prisma from '../lib/prisma';
+import prisma from 'lib/prisma';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import { HubBorderColor, HubSize } from '../lib/HubSize';
+import { HubBorderColor, HubSize } from 'lib/HubSize';
 import Link from 'next/link';
 
 const Hubs = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {

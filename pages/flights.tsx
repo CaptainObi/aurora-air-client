@@ -1,7 +1,7 @@
 import { InferGetStaticPropsType, GetStaticPropsContext } from 'next';
-import { HubSize } from '../lib/HubSize';
-import FlightCards from '../components/FlightCard/FlightCards';
-import prisma from '../lib/prisma';
+import { HubSize } from 'lib/HubSize';
+import FlightCards from 'components/FlightCard/FlightCards';
+import prisma from 'lib/prisma';
 
 const Flights = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
