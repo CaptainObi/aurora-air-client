@@ -27,6 +27,13 @@ const startServer = apolloServer.start();
 //   })(req, res);
 // });
 
+export default async function handler(req, res) {
+  await startServer;
+  await apolloServer.createHandler({
+    path: '/api/graphql',
+  })(req, res);
+}
+
 export const config = {
   api: {
     bodyParser: false,
