@@ -3,7 +3,6 @@ import Fuse from 'fuse.js';
 import { useState } from 'react';
 import Search from '../Search';
 import Select from 'react-select';
-import { Size } from '.prisma/client';
 
 interface Props {
   flights: FlightCardProps[];
