@@ -44,7 +44,7 @@ model Gate {
 }
 
 model Flight {
-  number  Int    @unique @id
+  number  Int    @id @unique
   plane   Plane  @relation(fields: [planeId], references: [id])
   planeId Int    @map("plane_id")
   gates   Gate[]

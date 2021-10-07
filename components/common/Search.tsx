@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface Props {
   search: string;
   onSearch: (value: string) => void;
@@ -6,7 +8,13 @@ interface Props {
 const Search = ({ onSearch, search }: Props) => {
   return (
     <div className="flex items-center w-full p-2 mb-2 rounded-lg shadow-md md:w-1/3">
-      <img src="/search.svg" width="15" height="15" className="mr-2" />
+      <Image
+        src="/search.svg"
+        width="15"
+        height="15"
+        className="mr-2"
+        alt="Magnifying Glass"
+      />
       <input
         className="flex-grow w-auto focus:border-transparent focus:outline-none"
         type="search"
@@ -15,7 +23,8 @@ const Search = ({ onSearch, search }: Props) => {
         value={search}
       />
       {search && (
-        <img
+        <Image
+          alt="Cross Button"
           title="Clear Search"
           className="order-last cursor-pointer"
           src="/close.svg"

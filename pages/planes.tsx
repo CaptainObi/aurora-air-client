@@ -1,7 +1,7 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import prisma from '../lib/prisma';
+import prisma from 'lib/prisma';
 import Image from 'next/image';
-import { GateSize } from '../lib/Size';
+import { GateSize } from 'lib/Size';
 
 const Planes = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -12,7 +12,7 @@ const Planes = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
             GateSize(a.size) - GateSize(b.size) || (a.name > b.name ? 1 : -1),
         )
         .map((plane) => (
-          <div>
+          <div key={plane.name}>
             <h1 className="text-3xl font-thin">{plane.name}</h1>
             <div className="w-full mb-2 border-t">
               <h2 className="mt-1 font-mono">

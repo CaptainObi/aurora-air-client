@@ -3,8 +3,8 @@ import {
   GetStaticPropsContext,
   InferGetStaticPropsType,
 } from 'next';
-import prisma from '../../lib/prisma';
-import FlightCards from '../../components/FlightCard/FlightCards';
+import prisma from 'lib/prisma';
+import FlightCards from 'components/FlightCard/FlightCards';
 
 const Airport = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (

@@ -1,6 +1,6 @@
-import prisma from '../lib/prisma';
+import prisma from 'lib/prisma';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import { HubBorderColor, HubSize } from '../lib/HubSize';
+import { HubBorderColor, HubSize } from 'lib/HubSize';
 import Link from 'next/link';
 
 const Hubs = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -17,7 +17,7 @@ const Hubs = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
             (a.name > b.name ? 1 : -1),
         )
         .map((s) => (
-          <div>
+          <div key={s.code}>
             <h1 className="text-3xl font-thin">
               {s.name} ({s.code})
             </h1>

@@ -1,7 +1,7 @@
 import FlightCard, { FlightCardProps, Side } from './FlightCard';
 import Fuse from 'fuse.js';
 import { useState } from 'react';
-import Search from '../common/Search';
+import Search from '../Common/Search';
 import Select from 'react-select';
 import { Size } from '.prisma/client';
 
