@@ -1,7 +1,7 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import prisma from 'lib/prisma';
+import prisma from '../lib/prisma';
 import Image from 'next/image';
-import { GateSize } from 'lib/Size';
+import { GateSize } from '../lib/Size';
 
 const Planes = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (

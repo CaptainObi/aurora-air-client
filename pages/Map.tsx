@@ -1,4 +1,4 @@
-import prisma from 'lib/prisma';
+import prisma from '../lib/prisma';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import { useEffect } from 'react';
 import { selectAll, select } from 'd3-selection';
