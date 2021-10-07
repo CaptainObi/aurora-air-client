@@ -25,9 +25,7 @@ const FlightCardGate = ({ gate, align }: Props) => {
           >
             {gate.airport.code}
           </h1>
-          <h1
-            className={`font-semibold ${alignText}`}
-          >{`Gate ${gate.name}`}</h1>
+          <h1 className={`font-semibold ${alignText}`}>Gate {gate.name}</h1>
         </div>
       </Link>
       <h1 className={`font-mono text-xs ${alignText}`}>

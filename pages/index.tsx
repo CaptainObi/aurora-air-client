@@ -1,5 +1,5 @@
 const Home = (props) => {
-  return <div></div>;
+  return <div>Aurora Air 👀</div>;
 };
 
 export default Home;

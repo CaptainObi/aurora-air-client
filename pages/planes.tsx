@@ -9,10 +9,12 @@ const Planes = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
         <div>
           <h1 className="text-3xl font-thin">{plane.name}</h1>
           <div className="w-full mb-2 border-t">
-            <h2 className="mt-1 font-mono">{`${plane.length}l, ${plane.width}w`}</h2>
+            <h2 className="mt-1 font-mono">
+              {plane.length}l, {plane.width}w
+            </h2>
             <h2>
               <b>Used On: </b>
-              {`${plane.flights.length} flights`}
+              {plane.flights.length} flights
             </h2>
             <h2>
               <b>Size: </b>

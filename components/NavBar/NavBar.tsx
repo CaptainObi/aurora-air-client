@@ -7,7 +7,7 @@ interface Elements {
 
 const NavBar = ({}) => {
   const elements: Elements[] = [
-    { label: 'Map', link: '/map' },
+    //{ label: 'Map', link: '/map' },
     { label: 'All Flights', link: '/flights' },
     { label: 'Home', link: '/' },
     { label: 'Hubs', link: '/hubs' },
