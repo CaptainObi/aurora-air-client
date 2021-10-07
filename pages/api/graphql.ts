@@ -3,6 +3,7 @@ import { schema } from '../../graphql/schema';
 import { resolvers } from '../../graphql/resolvers';
 import Cors from 'micro-cors';
 import { createContext } from '../../graphql/context';
+import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 
 const cors = Cors({
   origin: '*',
@@ -21,6 +22,7 @@ const apolloServer = new ApolloServer({
   resolvers,
   context: createContext,
   introspection: true,
+  plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 });
 
 const startServer = apolloServer.start();
