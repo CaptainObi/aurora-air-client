@@ -7,9 +7,13 @@
   },
   "dependencies": {
     "@prisma/client": "^3.1.1",
+    "apollo-server-micro": "^3.3.0",
     "d3": "^7.0.4",
     "fuse.js": "^6.4.6",
+    "graphql": "^15.6.1",
+    "micro-cors": "^0.1.1",
     "next": "latest",
+    "nexus": "^1.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-select": "^5.0.0"
