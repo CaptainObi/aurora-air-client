@@ -69,9 +69,9 @@ const FlightCard = ({ flight, side }: Props) => {
   const leftSize = sortedGates.left.airport.hubType;
   const leftColor =
     leftSize === 'Main'
-      ? 'border-aurora-pink'
+      ? 'bg-aurora-pink'
       : leftSize === 'NonHub'
-      ? 'border-aurora-blue'
+      ? 'bg-aurora-blue'
       : leftSize === 'Secondary'
       ? 'bg-aurora-purple'
       : 'bg-aurora-deep-blue';
@@ -79,9 +79,9 @@ const FlightCard = ({ flight, side }: Props) => {
   const rightSize = sortedGates.right.airport.hubType;
   const rightColor =
     rightSize === 'Main'
-      ? 'border-aurora-pink'
+      ? 'bg-aurora-pink'
       : rightSize === 'NonHub'
-      ? 'border-aurora-blue'
+      ? 'bg-aurora-blue'
       : rightSize === 'Secondary'
       ? 'bg-aurora-purple'
       : 'bg-aurora-deep-blue';

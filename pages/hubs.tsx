@@ -24,12 +24,12 @@ const Hubs = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
             <div
               className={`mb-2 w-full border-t ${
                 hubType === 'Main'
-                  ? 'bg-aurora-pink'
+                  ? 'border-aurora-pink'
                   : hubType === 'Secondary'
-                  ? 'bg-aurora-purple'
+                  ? 'border-aurora-purple'
                   : hubType === 'Other'
-                  ? 'bg-aurora-deep-blue'
-                  : 'bg-aurora-blue'
+                  ? 'border-aurora-deep-blue'
+                  : 'border-aurora-blue'
               }`}
             >
               <h2 className="mt-1 font-mono">
