@@ -1,5 +1,5 @@
 import { Airport, Plane, Size } from '.prisma/client';
-import { HubColor, HubSize } from 'lib/HubSize';
+import { HubSize } from 'lib/HubSize';
 import FlightCardGate from './FlightCardGate';
 import FlightCardMiddle from './FlightCardMiddle';
 
@@ -66,12 +66,29 @@ const FlightCard = ({ flight, side }: Props) => {
   };
 
   const sortedGates = sortGates(flight.gates);
+  const leftSize = sortedGates.left.airport.hubType;
+  const leftColor =
+    leftSize === 'Main'
+      ? 'border-aurora-pink'
+      : leftSize === 'NonHub'
+      ? 'border-aurora-blue'
+      : leftSize === 'Secondary'
+      ? 'bg-aurora-purple'
+      : 'bg-aurora-deep-blue';
+
+  const rightSize = sortedGates.right.airport.hubType;
+  const rightColor =
+    rightSize === 'Main'
+      ? 'border-aurora-pink'
+      : rightSize === 'NonHub'
+      ? 'border-aurora-blue'
+      : rightSize === 'Secondary'
+      ? 'bg-aurora-purple'
+      : 'bg-aurora-deep-blue';
 
   return (
     <div className="w-full p-0.5 border-t border-b flex border-gray-300 flex-col md:flex-row">
-      <div className={`md:w-1.5 ${HubColor(sortedGates.left.airport.hubType)}`}>
-        &nbsp;
-      </div>
+      <div className={`md:w-1.5 ${leftColor}`}>&nbsp;</div>
       <div className="grid items-center w-full grid-cols-2 p-1 md:flex md:flex-row md:grid-cols-none">
         <FlightCardGate gate={sortedGates.left} align="LEFT" />
         <FlightCardMiddle
@@ -81,13 +98,7 @@ const FlightCard = ({ flight, side }: Props) => {
         />
         <FlightCardGate gate={sortedGates.right} align="RIGHT" />
       </div>
-      <div
-        className={`md:w-1.5 bg-gradient-to-b ${HubColor(
-          sortedGates.right.airport.hubType,
-        )}`}
-      >
-        &nbsp;
-      </div>
+      <div className={`md:w-1.5 bg-gradient-to-b ${rightColor}`}>&nbsp;</div>
     </div>
   );
 };

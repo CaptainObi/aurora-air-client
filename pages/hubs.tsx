@@ -1,6 +1,6 @@
 import prisma from 'lib/prisma';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
-import { HubBorderColor, HubSize } from 'lib/HubSize';
+import { HubSize } from 'lib/HubSize';
 import Link from 'next/link';
 
 const Hubs = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -16,37 +16,45 @@ const Hubs = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
             HubSize(a.hubType) - HubSize(b.hubType) ||
             (a.name > b.name ? 1 : -1),
         )
-        .map((s) => (
-          <div key={s.code}>
+        .map(({ code, name, xCord, yCord, cities, hubType, link, copy }) => (
+          <div key={code}>
             <h1 className="text-3xl font-thin">
-              {s.name} ({s.code})
+              {name} ({code})
             </h1>
             <div
-              className={`mb-2 w-full border-t ${HubBorderColor(s.hubType)}`}
+              className={`mb-2 w-full border-t ${
+                hubType === 'Main'
+                  ? 'bg-aurora-pink'
+                  : hubType === 'Secondary'
+                  ? 'bg-aurora-purple'
+                  : hubType === 'Other'
+                  ? 'bg-aurora-deep-blue'
+                  : 'bg-aurora-blue'
+              }`}
             >
               <h2 className="mt-1 font-mono">
-                ({s.xCord}, {s.yCord})
+                ({xCord}, {yCord})
               </h2>
               <h2>
-                <b>Cit{s.cities.length === 1 ? 'y' : 'ies'}: </b>
-                {s.cities.length === 1
-                  ? s.cities[0]?.name
-                  : s.cities.map(({ name }, e, array) =>
+                <b>Cit{cities.length === 1 ? 'y' : 'ies'}: </b>
+                {cities.length === 1
+                  ? cities[0]?.name
+                  : cities.map(({ name }, e, array) =>
                       array.length === e + 1 ? name : `${name}, `,
                     )}
               </h2>
               <h2>
                 <b>Type: </b>
-                {s.hubType}
+                {hubType}
               </h2>
-              <Link href={s.link}>
+              <Link href={link}>
                 <a className="underline hover:text-aurora-teal">Wiki</a>
               </Link>
               <h1> </h1>
-              <Link href={`/airport/${s.code}`}>
+              <Link href={`/airport/${code}`}>
                 <a className="underline hover:text-aurora-teal">Flights</a>
               </Link>
-              <p>{s.copy}</p>
+              <p>{copy}</p>
             </div>
           </div>
         ))}
