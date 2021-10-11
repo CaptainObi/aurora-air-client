@@ -6,7 +6,7 @@ interface Props {
   yCord?: number;
   cities: City[];
   hubType: HubType;
-  link: string;
+  link?: string;
   code?: string;
   copy?: string;
   showFlights?: boolean;
@@ -43,9 +43,11 @@ const HubInfo = ({
         <b>Type: </b>
         {hubType === 'NonHub' ? 'Not a hub' : hubType}
       </h2>
-      <Link href={link}>
-        <a className="underline hover:text-aurora-teal">Wiki</a>
-      </Link>
+      {link && (
+        <Link href={link}>
+          <a className="underline hover:text-aurora-teal">Wiki</a>
+        </Link>
+      )}
       {showFlights && (
         <>
           <h1> </h1>

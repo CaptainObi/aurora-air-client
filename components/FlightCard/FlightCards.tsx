@@ -15,7 +15,7 @@ interface Props {
     yCord: number;
     copy?: string;
     hubType: HubType;
-    link: string;
+    link?: string;
     cities: City[];
   };
 }
