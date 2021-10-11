@@ -3,7 +3,6 @@ import Fuse from 'fuse.js';
 import { useState } from 'react';
 import Search from '../Utility/Search';
 import Select from 'react-select';
-import Link from 'next/link';
 import { City, HubType } from '.prisma/client';
 import HubInfo from 'components/Utility/HubInfo';
 interface Props {
@@ -70,14 +69,15 @@ const FlightCards = ({ side, flights, sort, airport }: Props) => {
         />
       </div>
       {airport && (
-        <div className="w-full p-2 mb-2 rounded-md shadow-md md:w-1/4">
+        <div className="w-full p-2 rounded-md shadow-md md:w-1/4">
           <HubInfo {...airport} />
         </div>
       )}
-
-      {sortFlights().map((e) => (
-        <FlightCard key={e.number} flight={e} side={side} />
-      ))}
+      <div className="py-2">
+        {sortFlights().map((e) => (
+          <FlightCard key={e.number} flight={e} side={side} />
+        ))}
+      </div>
     </div>
   );
 };

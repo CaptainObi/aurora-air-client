@@ -21,7 +21,7 @@ const FlightCardGate = ({ gate, align }: Props) => {
       <Link href={`/airport/${gate.airport.code}`} passHref>
         <div className="hover:text-aurora-purple">
           <h1
-            className={`text-4xl font-thin ${alignText} text-gray-500 hover:text-aurora-purple m-0.5`}
+            className={`text-4xl font-thin ${alignText} text-gray-500 hover:text-aurora-purple`}
           >
             {gate.airport.code}
           </h1>

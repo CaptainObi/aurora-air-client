@@ -1,5 +1,4 @@
 import { InferGetStaticPropsType, GetStaticPropsContext } from 'next';
-import { HubSize } from 'lib/HubSize';
 import FlightCards from 'components/FlightCard/FlightCards';
 import prisma from 'lib/prisma';
 import Head from 'next/head';

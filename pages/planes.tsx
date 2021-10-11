@@ -1,6 +1,6 @@
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import prisma from 'lib/prisma';
-import Image from 'next/image';
+//import Image from 'next/image';
 import { GateSize } from 'lib/Size';
 import Head from 'next/head';
 
