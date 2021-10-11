@@ -5,11 +5,23 @@ import {
 } from 'next';
 import prisma from 'lib/prisma';
 import FlightCards from 'components/FlightCard/FlightCards';
+import Head from 'next/head';
 
 const Airport = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div>
+      <Head>
+        <title>{data.code} Flights</title>
+      </Head>
       <FlightCards
+        airport={{
+          xCord: data.xCord,
+          yCord: data.yCord,
+          hubType: data.hubType,
+          cities: data.cities,
+          copy: data.copy,
+          link: data.link,
+        }}
         flights={data.gates.flatMap(({ flights }) => flights)}
         sort={(a, b) => a.number - b.number}
         side={{ code: data.code, direction: 'RIGHT' }}
@@ -36,6 +48,8 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
       xCord: true,
       yCord: true,
       hubType: true,
+      link: true,
+      copy: true,
       gates: {
         select: {
           name: true,

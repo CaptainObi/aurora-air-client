@@ -1,5 +1,13 @@
+import Head from 'next/head';
 const Home = (props) => {
-  return <div>Aurora Air 👀</div>;
+  return (
+    <div>
+      <Head>
+        <title>Aurora Air</title>
+      </Head>
+      <div>Aurora Air 👀</div>
+    </div>
+  );
 };
 
 export default Home;

@@ -1,16 +1,26 @@
 import FlightCard, { FlightCardProps, Side } from './FlightCard';
 import Fuse from 'fuse.js';
 import { useState } from 'react';
-import Search from '../Search';
+import Search from '../Utility/Search';
 import Select from 'react-select';
-
+import Link from 'next/link';
+import { City, HubType } from '.prisma/client';
+import HubInfo from 'components/Utility/HubInfo';
 interface Props {
   flights: FlightCardProps[];
   side?: Side | null;
   sort: (a: FlightCardProps, b: FlightCardProps) => number;
+  airport?: {
+    xCord: number;
+    yCord: number;
+    copy?: string;
+    hubType: HubType;
+    link: string;
+    cities: City[];
+  };
 }
 
-const FlightCards = ({ side, flights, sort }: Props) => {
+const FlightCards = ({ side, flights, sort, airport }: Props) => {
   const [search, setSearch] = useState('');
   const [size, setSize] = useState('All');
 
@@ -59,6 +69,12 @@ const FlightCards = ({ side, flights, sort }: Props) => {
           className="w-full mb-2 md:mb-0 md:w-1/4 md:ml-2"
         />
       </div>
+      {airport && (
+        <div className="w-full p-2 mb-2 rounded-md shadow-md md:w-1/4">
+          <HubInfo {...airport} />
+        </div>
+      )}
+
       {sortFlights().map((e) => (
         <FlightCard key={e.number} flight={e} side={side} />
       ))}

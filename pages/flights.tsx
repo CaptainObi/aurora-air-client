@@ -2,17 +2,23 @@ import { InferGetStaticPropsType, GetStaticPropsContext } from 'next';
 import { HubSize } from 'lib/HubSize';
 import FlightCards from 'components/FlightCard/FlightCards';
 import prisma from 'lib/prisma';
+import Head from 'next/head';
 
 const Flights = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div>
-      <FlightCards
-        flights={data.filter(
-          (value, index, self) =>
-            self.map(({ number }) => number).indexOf(value.number) === index,
-        )}
-        sort={(a, b) => a.number - b.number}
-      />
+      <Head>
+        <title>Flights</title>
+      </Head>
+      <div>
+        <FlightCards
+          flights={data.filter(
+            (value, index, self) =>
+              self.map(({ number }) => number).indexOf(value.number) === index,
+          )}
+          sort={(a, b) => a.number - b.number}
+        />
+      </div>
     </div>
   );
 };

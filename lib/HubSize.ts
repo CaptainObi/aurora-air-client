@@ -1,6 +1,10 @@
 import { HubType } from '.prisma/client';
 
 export const HubSize = (value: HubType) => size[value] ?? 3;
+export const HubColor = (value: HubType) =>
+  hubBackgroundColor[value] ?? 'bg-aurora-blue';
+export const HubBorderColor = (value: HubType) =>
+  hubBorderColor[value] ?? 'border-aurora-blue';
 
 const hubBorderColor = {
   Main: 'border-aurora-pink',

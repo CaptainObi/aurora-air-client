@@ -1,13 +1,16 @@
 module.exports = {
   mode: 'jit',
-  purge: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    './enums/**/*.{js, ts, jsx, tsx}',
-  ],
+  purge: {
+    content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}', './lib/**/*.{js,ts,jsx,tsx}']
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      fontFamily: {
+        'display': 'Montserrat',
+        'sans': 'Roboto',
+        'mono': 'Space Mono'
+      },
       colors: {
         'aurora-pink': '#9F35F0',
         'aurora-purple': '#743DFA',
