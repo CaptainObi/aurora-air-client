@@ -1,4 +1,4 @@
-import { objectType, extendType, enumType } from 'nexus';
+import { objectType, extendType, enumType, intArg } from 'nexus';
 import { Flight } from './Flight';
 
 export const Plane = objectType({
@@ -28,9 +28,13 @@ export const PlanesQuery = extendType({
   type: 'Query',
   definition(t) {
     t.nonNull.list.field('planes', {
+      args: { take: intArg(), skip: intArg() },
       type: Plane,
       async resolve(_parent, _args, ctx) {
-        return ctx.prisma.plane.findMany();
+        return ctx.prisma.plane.findMany({
+          take: _args.take || undefined,
+          skip: _args.skip || undefined,
+        });
       },
     });
   },

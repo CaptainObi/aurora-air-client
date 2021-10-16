@@ -10,11 +10,13 @@ enum HubType {
 }
 
 type Query {
-  airports: [airport]!
-  cities: [city]!
-  flights: [flight]!
-  gates: [gate]!
-  planes: [plane]!
+  airportByCode(code: String): airport
+  airports(skip: Int, take: Int): [airport]!
+  cities(skip: Int, take: Int): [city]!
+  flightByNumber(number: Int): flight
+  flights(skip: Int, take: Int): [flight]!
+  gates(skip: Int, take: Int): [gate]!
+  planes(skip: Int, take: Int): [plane]!
 }
 
 enum Size {

@@ -1,4 +1,4 @@
-import { extendType, objectType } from 'nexus';
+import { extendType, intArg, objectType } from 'nexus';
 import { Airport } from './Airport';
 
 export const City = objectType({
@@ -21,9 +21,13 @@ export const CitesQuery = extendType({
   type: 'Query',
   definition(t) {
     t.nonNull.list.field('cities', {
+      args: { take: intArg(), skip: intArg() },
       type: City,
       async resolve(_parent, _args, ctx) {
-        return ctx.prisma.city.findMany();
+        return ctx.prisma.city.findMany({
+          take: _args.take || undefined,
+          skip: _args.skip || undefined,
+        });
       },
     });
   },

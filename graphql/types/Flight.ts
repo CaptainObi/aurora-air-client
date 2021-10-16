@@ -1,4 +1,5 @@
-import { extendType, objectType } from 'nexus';
+import { extendType, intArg, objectType } from 'nexus';
+import { resolve } from 'path/posix';
 import { Gate } from './Gate';
 import { Plane } from './Plane';
 
@@ -30,9 +31,30 @@ export const FlightsQuery = extendType({
   type: 'Query',
   definition(t) {
     t.nonNull.list.field('flights', {
+      args: { take: intArg(), skip: intArg() },
       type: Flight,
       async resolve(_parent, _args, ctx) {
-        return ctx.prisma.flight.findMany();
+        return ctx.prisma.flight.findMany({
+          take: _args.take || undefined,
+          skip: _args.skip || undefined,
+        });
+      },
+    });
+  },
+});
+
+export const QueryFlightByNumber = extendType({
+  type: 'Query',
+  definition(t) {
+    t.field('flightByNumber', {
+      args: { number: intArg() },
+      type: Flight,
+      async resolve(_parent, _args, ctx) {
+        return ctx.prisma.flight.findUnique({
+          where: {
+            number: _args.number,
+          },
+        });
       },
     });
   },

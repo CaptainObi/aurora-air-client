@@ -1,5 +1,5 @@
 import { Size } from './Plane';
-import { extendType, objectType } from 'nexus';
+import { extendType, intArg, objectType } from 'nexus';
 import { Airport } from './Airport';
 import { Flight } from './Flight';
 
@@ -33,9 +33,13 @@ export const GatesQuery = extendType({
   type: 'Query',
   definition(t) {
     t.nonNull.list.field('gates', {
+      args: { take: intArg(), skip: intArg() },
       type: Gate,
       async resolve(_parent, _args, ctx) {
-        return ctx.prisma.gate.findMany();
+        return ctx.prisma.gate.findMany({
+          take: _args.take || undefined,
+          skip: _args.skip || undefined,
+        });
       },
     });
   },
