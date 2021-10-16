@@ -1,4 +1,4 @@
-import { InferGetStaticPropsType, GetStaticPropsContext } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import FlightCards from 'components/FlightCard/FlightCards';
 import prisma from 'lib/prisma';
 import Head from 'next/head';
@@ -22,7 +22,7 @@ const Flights = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   );
 };
 
-export const getStaticProps = async (context: GetStaticPropsContext) => {
+export const getStaticProps = async () => {
   const data = await prisma.flight.findMany({
     select: {
       number: true,

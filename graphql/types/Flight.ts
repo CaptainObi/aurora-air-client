@@ -1,5 +1,4 @@
 import { extendType, intArg, objectType } from 'nexus';
-import { resolve } from 'path/posix';
 import { Gate } from './Gate';
 import { Plane } from './Plane';
 

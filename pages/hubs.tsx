@@ -1,5 +1,5 @@
 import prisma from 'lib/prisma';
-import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import { HubBorderColor, HubSize } from 'lib/HubSize';
 import Head from 'next/head';
 import HubInfo from 'components/Utility/HubInfo';
@@ -43,7 +43,7 @@ const Hubs = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   );
 };
 
-export const getStaticProps = async (context: GetStaticPropsContext) => {
+export const getStaticProps = async () => {
   const data = await prisma.airport.findMany({
     where: {
       NOT: [{ hubType: { equals: 'NonHub' } }],

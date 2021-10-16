@@ -1,5 +1,6 @@
 import Head from 'next/head';
-const Home = (props) => {
+// eslint-disable-next-line no-unused-vars
+const Index = (props) => {
   return (
     <div>
       <Head>
@@ -10,4 +11,4 @@ const Home = (props) => {
   );
 };
 
-export default Home;
+export default Index;

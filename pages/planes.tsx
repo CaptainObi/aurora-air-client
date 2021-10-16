@@ -1,4 +1,4 @@
-import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import prisma from 'lib/prisma';
 //import Image from 'next/image';
 import { GateSize } from 'lib/Size';
@@ -45,7 +45,7 @@ const Planes = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
   );
 };
 
-export const getStaticProps = async (context: GetStaticPropsContext) => {
+export const getStaticProps = async () => {
   const data = await prisma.plane.findMany({
     select: {
       name: true,
