@@ -11,7 +11,6 @@ const Flights = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
       </Head>
       <div>
         <FlightCards
-          junk={}
           flights={data.filter(
             (value, index, self) =>
               self.map(({ number }) => number).indexOf(value.number) === index,
